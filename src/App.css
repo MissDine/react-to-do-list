@@ -5,12 +5,46 @@
 }
 
 .App .title {
-    font-size: 5rem;
+    font-size: 3rem;
     padding: 0px 20px 0px 20px;
-    background-color: rgb(242, 255, 123);
+    /* background-color: rgb(242, 255, 123); */
     border-radius: 10px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     align-self: center;
     color: #1b1b1b;
     font-family: "Covered By Your Grace", cursive;
+}
+
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* width: 100%; */
+    margin: 2pc 25pc;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.box {
+    border: 1px solid black;
+    background-color: black;
+}
+
+.g-btn {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.g-btn>div,
+.g-btn>div>svg {
+    width: 40px;
+    height: 38px;
+}
+
+.mp-4 box {
+    margin-top: 10px;
 }

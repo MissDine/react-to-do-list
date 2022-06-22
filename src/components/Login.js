@@ -12,6 +12,16 @@ const Login = () => {
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
+  const { logOut, user } = useUserAuth();
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    };
+  }  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -36,7 +46,7 @@ const Login = () => {
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Login</h2>
+        {/* <h2 className="mb-3">Firebase Auth Login</h2> */}
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -72,6 +82,17 @@ const Login = () => {
       </div>
       <div className="p-4 box mt-3 text-center">
         Don't have an account? <Link to="/signup">Sign up</Link>
+      </div>
+
+      <div className="logout"> 
+    <div className="p-4 box mt-3 text-center">User Logged in:<br />
+        {user && user.email}
+      </div>
+    <div className="d-grid gap-2">
+        <Button variant="primary" onClick={handleLogout}>
+          Log out
+        </Button>
+      </div>
       </div>
     </>
   );
