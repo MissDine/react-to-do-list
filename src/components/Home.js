@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./todoapp.css";
+import "./Home.css";
 
-function TodoApp() {
+function Home() {
   const [task, setTask] = useState("");
   const [tasklist, setTaskList] = useState([]);
 
@@ -79,4 +79,4 @@ function TodoApp() {
   );
 }
 
-export default TodoApp;
+export default Home;
