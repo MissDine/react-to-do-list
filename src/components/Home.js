@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./Home.css";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import { useUserAuth } from "../context/UserAuthContext";
 
 function Home() {
   const [task, setTask] = useState("");
@@ -8,6 +11,17 @@ function Home() {
   const handleChange = (e) => {
     setTask(e.target.value);
   };
+
+  const { logOut, user } = useUserAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    };
+  }  
 
   const AddTask = () => {
     if (task !== "") {
@@ -44,7 +58,8 @@ function Home() {
   };
 
   return (
-    <div className="todo">
+   <>
+      <div className="todo">
       <input
         type="text"
         name="text"
@@ -76,6 +91,15 @@ function Home() {
         </ul>
       ) : null}
     </div>
+    <div className="p-4 box mt-3 text-center"><br />
+        {user && user.email}
+      </div>
+    <div className="d-grid gap-2">
+        <Button variant="primary" onClick={handleLogout}>
+          Log out
+        </Button>
+      </div>
+   </>
   );
 }
 
