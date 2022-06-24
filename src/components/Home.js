@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 // import { Button } from "react-bootstrap";
 // import { useNavigate } from "react-router";
@@ -56,6 +56,11 @@ function Home() {
 
     setTaskList(newTaskList);
   };
+  useEffect(()=> {
+    fetch("http://localhost:9292").then(response=>response.json()).then(data=>console.log(data))
+    
+  })
+
 
   return (
    <>
