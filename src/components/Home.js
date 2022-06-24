@@ -33,6 +33,19 @@ function Home() {
 
       setTaskList([...tasklist, taskDetails]);
     }
+    fetch("http://localhost:9294/tasks",{
+      method: "POST",
+      headers: {
+        "Content_Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: task,
+        user_id: 1,
+        list_id: 1
+      })
+    })
+    .then(response=> response.json())
+    .then(data => console.log(task))
   };
 
   const deletetask = (e, id) => {
@@ -57,7 +70,7 @@ function Home() {
     setTaskList(newTaskList);
   };
   useEffect(()=> {
-    fetch("http://localhost:9292").then(response=>response.json()).then(data=>console.log(data))
+    fetch("http://localhost:9294").then(response=>response.json()).then(data=>console.log(data))
     
   })
 
