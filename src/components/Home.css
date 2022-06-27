@@ -91,3 +91,43 @@
     margin-left: 10px;
     color: white;
 }
+
+.list {
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+
+.edit {
+    margin-top: 5px;
+    /* float: right; */
+    padding: 4px 10px 4px 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: green;
+    margin-left: 10px;
+    color: white;
+}
+
+.dele {
+    margin-top: 5px;
+    /* float: right; */
+    padding: 4px 10px 4px 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+}
+
+.sub {
+    margin-top: 5px;
+    /* float: right; */
+    padding: 4px 10px 4px 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}

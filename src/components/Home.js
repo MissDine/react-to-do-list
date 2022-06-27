@@ -23,7 +23,9 @@ function Home() {
   //   };
   // }  
 
-  const AddTask = () => {
+  const AddTask = (e) => {
+    e.preventDefault()
+    setTask()
     if (task !== "") {
       const taskDetails = {
         id: Math.floor(Math.random() * 1000),
@@ -33,7 +35,7 @@ function Home() {
 
       setTaskList([...tasklist, taskDetails]);
     }
-    fetch("http://localhost:9294/tasks",{
+    fetch("http://localhost:9291/tasks",{
       method: "POST",
       headers: {
         "Content_Type": "application/json"
@@ -45,7 +47,8 @@ function Home() {
       })
     })
     .then(response=> response.json())
-    .then(data => console.log(task))
+    .then(data => console.log(data))
+    setTask("")
   };
 
   const deletetask = (e, id) => {
@@ -70,7 +73,7 @@ function Home() {
     setTaskList(newTaskList);
   };
   useEffect(()=> {
-    fetch("http://localhost:9294").then(response=>response.json()).then(data=>console.log(data))
+    fetch("http://localhost:9291").then(response=>response.json()).then(data=>console.log(data))
     
   })
 
@@ -82,16 +85,20 @@ function Home() {
       <div className="App">
       <span className="title">My To Do</span> <br />
     </div>
-      <input
+    <form action="" onSubmit={AddTask}>
+    <input
         type="text"
         name="text"
         id="text"
         onChange={(e) => handleChange(e)}
         placeholder="Add task here..."
+        value={task}
       />
-      <button className="add-btn" onClick={AddTask}>
+      <button className="add-btn">
         Add
       </button>
+    </form>
+     
       <br />
       {tasklist !== [] ? (
         <ul>

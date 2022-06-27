@@ -22,9 +22,9 @@ body {
     align-content: center;
     /* width: 100%; */
     margin: 2pc 25pc;
-    height: 100vh;
+    /* height: 100vh; */
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 .box {
