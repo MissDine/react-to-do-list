@@ -3,13 +3,14 @@ import "./Home.css";
 
 
 function List() {
+    
     const [task, setTask] = useState({
         user_id:null,
         name:""
     });
     const [tasklist, setTaskList] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:9291/tasks").then(response => response.json()).then(data =>setTaskList(data))
+        fetch("http://localhost:9291/").then(response => response.json()).then(data =>setTaskList(data))
 
     },[])
     function handleEdit(id, name){
@@ -22,7 +23,7 @@ function List() {
     }
 
     function handleDelete(id){
-        fetch(`http://localhost:9291/tasks/${id}`,{
+        fetch(`http://localhost:9291/${id}`,{
             method: "DELETE"
         })
         const remaining = tasklist.filter((item)=>item.id!== id)
@@ -49,7 +50,6 @@ function List() {
         })
         
     }
-
     
     return(
         <>
@@ -67,15 +67,24 @@ function List() {
                 })}
                 placeholder="Add list here..."
                 />
+
                 <input className = "sub"
                 type="submit" value="Edit list.." />
             </form>
             <ol>
-            {tasklist.map(item => (<li className="list" key = {item.id}>
-            {item.name} <button className="edit"
-            onClick = {()=>handleEdit(item.id, item.name)} >Edit</button> <button className="dele"
-            onClick={()=>handleDelete(item.id)}>Delete</button>
-            </li>))}
+            {tasklist.map(item => (
+            <div>
+                <li className="list" key = {item.id}>
+                {item.name} <button className="edit"
+                onClick = {()=>handleEdit(item.id, item.name)} >Edit</button> <button className="dele"
+                onClick={()=>handleDelete(item.id)}>Delete</button>
+                </li>
+                <ul>
+                    {item.tasks.map(task=>(<li key = {task.id}>{task.name}</li>))}
+                </ul>
+            </div>
+            ))}
+
             </ol>
         </div>
         </>

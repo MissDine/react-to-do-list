@@ -5,12 +5,18 @@ import "./Home.css";
 // import { useUserAuth } from "../context/UserAuthContext";
 
 function Home() {
+  const [list, setList] = useState()
   const [task, setTask] = useState("");
   const [tasklist, setTaskList] = useState([]);
+  const [id, setId] = useState("")
 
   const handleChange = (e) => {
     setTask(e.target.value);
   };
+  function handleListChange(e){
+    setId(e.target.value)
+  }
+  
 
   // const { logOut, user } = useUserAuth();
   // const navigate = useNavigate();
@@ -35,6 +41,8 @@ function Home() {
 
       setTaskList([...tasklist, taskDetails]);
     }
+
+    console.log("task: ", task, "id: ", id)
     fetch("http://localhost:9291/tasks",{
       method: "POST",
       headers: {
@@ -43,7 +51,7 @@ function Home() {
       body: JSON.stringify({
         name: task,
         user_id: 1,
-        list_id: 1
+        list_id: id
       })
     })
     .then(response=> response.json())
@@ -72,10 +80,12 @@ function Home() {
 
     setTaskList(newTaskList);
   };
-  useEffect(()=> {
-    fetch("http://localhost:9291").then(response=>response.json()).then(data=>console.log(data))
-    
-  })
+  useEffect(()=>{
+    fetch("http://localhost:9291/").then(response =>response.json()).then(data=>setList(data))
+},[])
+
+// console.log("eeeeeee",list);
+
 
 
   return (
@@ -94,6 +104,9 @@ function Home() {
         placeholder="Add task here..."
         value={task}
       />
+      <select onChange={(e) => handleListChange(e)}>
+        {list ? list.map(item=> (<option key = {item.id} value = {item.id}>{item.name}</option>)) : null}
+      </select>
       <button className="add-btn">
         Add
       </button>
@@ -103,7 +116,7 @@ function Home() {
       {tasklist !== [] ? (
         <ul>
           {tasklist.map((t) => (
-            <li className={t.isCompleted ? "crossText" : "listitem"}>
+            <li id={t.id} className={t.isCompleted ? "crossText" : "listitem"}>
               {t.value}
               <button
                 className="completed"
