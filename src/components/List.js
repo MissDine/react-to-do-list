@@ -6,24 +6,26 @@ function List() {
     
     const [task, setTask] = useState({
         user_id:null,
-        name:""
+        name:"",
+        list_id:null
     });
     const [tasklist, setTaskList] = useState([]);
     useEffect(() => {
         fetch("http://localhost:9291/").then(response => response.json()).then(data =>setTaskList(data))
 
     },[])
-    function handleEdit(id, name){
+    function handleEdit(id, name,list_id){
         setTask({
             ...task,
             user_id:id,
-            name:name
+            name:name,
+            list_id:list_id
         }) 
         
     }
 
     function handleDelete(id){
-        fetch(`http://localhost:9291/${id}`,{
+        fetch(`http://localhost:9291/tasks/${id}`,{
             method: "DELETE"
         })
         const remaining = tasklist.filter((item)=>item.id!== id)
@@ -46,7 +48,8 @@ function List() {
         })
         setTask({
             user_id:null,
-            name:""
+            name:"",
+            list_id:null
         })
         
     }
@@ -75,12 +78,13 @@ function List() {
             {tasklist.map(item => (
             <div>
                 <li className="list" key = {item.id}>
-                {item.name} <button className="edit"
-                onClick = {()=>handleEdit(item.id, item.name)} >Edit</button> <button className="dele"
-                onClick={()=>handleDelete(item.id)}>Delete</button>
+                {item.name} 
                 </li>
                 <ul>
-                    {item.tasks.map(task=>(<li key = {task.id}>{task.name}</li>))}
+                    {item.tasks.map(task=>(<li key = {task.id}>{task.name}
+                    <button className="edit"
+                onClick = {()=>handleEdit(task.id, task.name,item.id)} >Edit</button> <button className="dele"
+                onClick={()=>handleDelete(task.id)}>Delete</button></li>))}
                 </ul>
             </div>
             ))}
