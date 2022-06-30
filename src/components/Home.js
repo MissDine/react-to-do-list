@@ -43,10 +43,11 @@ function Home() {
     }
 
     console.log("task: ", task, "id: ", id)
-    fetch("http://localhost:9291/tasks",{
+    fetch("https://todo-sinatra-app.herokuapp.com/tasks",{
       method: "POST",
+      // mode: "no-cors",
       headers: {
-        "Content_Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         name: task,
@@ -81,7 +82,7 @@ function Home() {
     setTaskList(newTaskList);
   };
   useEffect(()=>{
-    fetch("http://localhost:9291/").then(response =>response.json()).then(data=>setList(data))
+    fetch("https://todo-sinatra-app.herokuapp.com/").then(response =>response.json()).then(data=>setList(data))
 },[])
 
 // console.log("eeeeeee",list);
@@ -93,7 +94,7 @@ function Home() {
 
       <div className="todo">
       <div className="App">
-      <span className="title">My To Do</span> <br />
+      <span className="title">My To Do List</span> <br />
     </div>
     <form action="" onSubmit={AddTask}>
     <input
@@ -104,7 +105,7 @@ function Home() {
         placeholder="Add task here..."
         value={task}
       />
-      <select onChange={(e) => handleListChange(e)}>
+      <select className = "sele" onChange={(e) => handleListChange(e)}>
         {list ? list.map(item=> (<option key = {item.id} value = {item.id}>{item.name}</option>)) : null}
       </select>
       <button className="add-btn">

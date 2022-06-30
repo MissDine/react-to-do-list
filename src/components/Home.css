@@ -23,6 +23,7 @@
 .todo input::placeholder {
     color: black;
     font-size: 1rem;
+    border-radius: 5px;
     /* padding: 10px; */
 }
 
@@ -42,12 +43,17 @@
     color: white;
     font-weight: bold;
     font-size: 1rem;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }
 
 
 /* .todo .add-btn:hover {
     padding: 15px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 20px;
 } */
 
 .todo ul {
@@ -78,6 +84,10 @@
     cursor: pointer;
     background-color: red;
     color: white;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .todo ul li .completed {
@@ -90,12 +100,16 @@
     background-color: green;
     margin-left: 10px;
     color: white;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .list {
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 900;
+    font-weight: bold;
 }
 
 .edit {
@@ -108,17 +122,25 @@
     background-color: green;
     margin-left: 10px;
     color: white;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .dele {
     margin-top: 5px;
     /* float: right; */
     padding: 4px 10px 4px 10px;
-    border-radius: 20px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
     background-color: red;
     color: white;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .sub {
@@ -130,4 +152,28 @@
     cursor: pointer;
     background-color: blue;
     color: white;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.sub:hover {
+    background: blue;
+}
+
+.sele {
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: white;
+    opacity: 1;
+}
+
+h1 {
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-style: normal;
 }

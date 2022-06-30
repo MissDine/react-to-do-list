@@ -11,7 +11,7 @@ function List() {
     });
     const [tasklist, setTaskList] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:9291/").then(response => response.json()).then(data =>setTaskList(data))
+        fetch("https://todo-sinatra-app.herokuapp.com/").then(response => response.json()).then(data =>setTaskList(data))
 
     },[])
     function handleEdit(id, name,list_id){
@@ -25,7 +25,7 @@ function List() {
     }
 
     function handleDelete(id){
-        fetch(`http://localhost:9291/tasks/${id}`,{
+        fetch(`https://todo-sinatra-app.herokuapp.com/tasks/${id}`,{
             method: "DELETE"
         })
         const remaining = tasklist.filter((item)=>item.id!== id)
@@ -34,7 +34,7 @@ function List() {
     function handleSubmit(e){
         e.preventDefault()
         console.log(task);
-        fetch(`http://localhost:9291/tasks/${task.user_id}`,{
+        fetch(`https://todo-sinatra-app.herokuapp.com/tasks/${task.user_id}`,{
             method: "PATCH",
             headers:{
                 "Content-Type":"application/json"
@@ -57,7 +57,7 @@ function List() {
     return(
         <>
             <div>
-            <h1>List of all tasks:</h1>
+            <h1 className="lii">List of all tasks:</h1>
             <form onSubmit = {handleSubmit}>
                 <input
                 type="text"
@@ -68,7 +68,7 @@ function List() {
                     ...task,
                     name: e.target.value
                 })}
-                placeholder="Add list here..."
+                placeholder="Edit task in the list..."
                 />
 
                 <input className = "sub"
