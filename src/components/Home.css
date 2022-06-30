@@ -21,7 +21,7 @@
 }
 
 .todo input::placeholder {
-    color: white;
+    color: black;
     font-size: 1rem;
     border-radius: 5px;
     /* padding: 10px; */
@@ -152,7 +152,7 @@
     border: none;
     cursor: pointer;
     background-color: blue;
-    color: black;
+    color: white;
     font-size: 1.2rem;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
