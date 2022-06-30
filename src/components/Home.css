@@ -188,3 +188,10 @@ ol {
     font-weight: 700;
     color: white;
 }
+
+.opti {
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: red;
+}

@@ -106,7 +106,7 @@ function Home() {
         value={task}
       />
       <select className = "sele" onChange={(e) => handleListChange(e)}>
-        {list ? list.map(item=> (<option key = {item.id} value = {item.id}>{item.name}</option>)) : null}
+        {list ? list.map(item=> (<option className="opti" key = {item.id} value = {item.id}>{item.name}</option>)) : null}
       </select>
       <button className="add-btn">
         Add
