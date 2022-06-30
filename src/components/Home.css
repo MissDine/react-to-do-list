@@ -11,8 +11,8 @@
 .todo input {
     background: transparent;
     border: none;
-    color: black;
-    border-bottom: 0px dashed black;
+    color: white;
+    border-bottom: 0px dashed white;
     min-width: 300px;
     margin-top: 40px;
     /* margin-left: 10px; */
@@ -21,7 +21,7 @@
 }
 
 .todo input::placeholder {
-    color: black;
+    color: white;
     font-size: 1rem;
     border-radius: 5px;
     /* padding: 10px; */
@@ -29,7 +29,7 @@
 
 .todo input:focus {
     outline: none;
-    border: 2px dotted black;
+    border: 2px dotted white;
 }
 
 .todo .add-btn {
@@ -64,7 +64,7 @@
 .todo ul li {
     list-style: none;
     margin-bottom: 4px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 10px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -72,7 +72,7 @@
     margin-left: -100px;
     background-color: rgb(236, 236, 236, 0.6);
     font-family: "Permanent Marker", cursive;
-    color: black;
+    color: white;
 }
 
 .todo ul li .delete {
