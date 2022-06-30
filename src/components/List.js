@@ -80,12 +80,12 @@ function List() {
                 <li className="list" key = {item.id}>
                 {item.name} 
                 </li>
-                <ol>
+                <ul>
                     {item.tasks.map(task=>(<li className="taskl" key = {task.id}>{task.name}
                     <button className="edit"
                 onClick = {()=>handleEdit(task.id, task.name,item.id)} >Edit</button> <button className="dele"
                 onClick={()=>handleDelete(task.id)}>Delete</button></li>))}
-                </ol>
+                </ul>
             </div>
             ))}
 
