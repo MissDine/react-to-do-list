@@ -1,23 +1,22 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import GoogleButton from "react-google-button";
-import { useUserAuth } from "../context/UserAuthContext";
+import React, { useState } from 'react';
+import { Alert, Button, Form } from 'react-bootstrap';
+import GoogleButton from 'react-google-button';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserAuth } from '../context/UserAuthContext';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError('');
     try {
       await logIn(email, password);
-      navigate("/home");
+      navigate('/home');
     } catch (err) {
       setError(err.message);
     }
@@ -26,9 +25,24 @@ const Login = () => {
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
-      await googleSignIn();
-      navigate("/home");
+      console.log('google sign in');
+      const result = await googleSignIn();
+      const user = result.user;
+      if (user) {
+        console.log('user', user);
+
+        // You can choose to save the below to customise the interface for the user
+        const email = user.email;
+        const displayName = user.displayName;
+        const photoURL = user.photoURL;
+
+        navigate('/home');
+      } else {
+        // Invalid login or user cancelled login, remain in the same page or show an error message
+        console.log('Invalid login');
+      }
     } catch (error) {
+      console.log('error', error);
       console.log(error.message);
     }
   };
